@@ -1,0 +1,79 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <h1 id='grade'>
+        <script>
+        const a ={ name:'찰스' , age:20 }; // object literal전용 브래킷
+        const b ={ name:'로라' , age:25 }; // object literal전용 브래킷
+        const c ={ name:'찰스' , age:20 }; // object literal전용 브래킷
+        const d = a; 
+
+        // a와 c는 다르지만, a와 d는 같다.
+        //a,c는 서로 같은 정보를 가진 다른 객체이지만, d는 a의 별명과 같은 것이다.
+        if (a===c)
+        {
+            console.log('두 사람은 같다');
+        }
+        else
+        {
+            console.log('두 사람은 다르다');
+        }
+
+        // e와 f는 같다. 왜인가? 위의 객체와 달리 이것은 단지 1이라는 값을 가진 메모리를 참조하기에 위 예시와 달리 e와 f가 같음
+        const e = 1;
+        const f = 1;
+
+        //string이라고 해서 다를 것 없이 g와 h는 같음
+        const g = '찰스';
+        const h = '찰스';
+     
+        //비교하기
+        const cmp_ol = (_x1,_x2) => {
+            if((_x1.name === _x2.name) && (_x1.age === _x2.age))
+            {
+                return true;
+            }
+            else false;
+        }
+        console.log('compare result is '+cmp_ol(a,c));
+
+
+        const cmp_ol2 = (_x1,_x2) => {
+            let _x1_keys = Object.keys(_x1);
+            let _x2_keys = Object.keys(_x2);
+            let flag = false;
+            if(_x1_keys.length !== _x2_keys.length)
+            {
+                return false;
+            }
+            _x1_keys = _x1_keys.sort();
+            _x2_keys = _x2_keys.sort();
+
+            _x1_keys.forEach((elem,idx) => {
+                if(_x1_keys[idx] !== _x2_keys[idx])
+                {
+                    //return flag;
+                    flag = true;
+                }
+                if(_x1[_x1_keys[idx]] !== _x2[_x2_keys[idx]])
+                {  
+                    //return flag;
+                    flag = true;
+                }
+            });
+
+            //foreach도 결국 함수이기 때문에 return을 해도 foreach함수 내부에서 return이 되어 cmp_ol2가 완전히 종료되지 않음
+            //따라서 문제점을 flag로 판별하고 최종적으로 flag를 통한 return을 걸어줌
+
+            return !flag;
+        }
+
+
+        
+        </script>
+        </h1>
+        
+    </body>
+</html>  

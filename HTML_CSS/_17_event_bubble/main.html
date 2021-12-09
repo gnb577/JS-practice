@@ -1,0 +1,42 @@
+<html>
+    <head>
+      
+    </head>
+    <body>  
+        <div>
+            <div>
+                <input type="checkbox">
+                <label for="">운동</label>
+            </div>
+            <div>
+                <input type="checkbox">
+                <label for="">쇼핑</label>
+            </div>
+        </div>
+
+        <script>
+            const all_inputs = document.querySelectorAll('input');
+            all_inputs.forEach((_ip,_idx)=>{
+                _ip.addEventListener('click',()=>{
+                    console.log(_idx+'회의 input click event 발생')
+                })
+
+            })
+            all_inputs.forEach((_ip,_idx)=>{
+                _ip.addEventListener('click',()=>{
+                    console.log(_idx+'회의 두번째 input click event 발생')
+                })
+
+            })
+
+            const divs = document.querySelectorAll('div');
+            divs.forEach((_dv,_idx)=>{
+                _dv.addEventListener('click',()=>{
+                    console.log('\n'+_idx+'회의 div click event 발생')
+                })
+
+            })
+
+        </script>
+    </body>
+</html>  

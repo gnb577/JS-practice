@@ -1,0 +1,46 @@
+<html>
+    <head>
+      
+    </head>
+    <body>  
+        <div>
+            <h1 id= 'count_down'></h1>
+        </div>
+    <script>
+        
+       //setTimeout : 일정 시간 후에 실행
+       /*
+       //1번
+       const hello= ()=> {console.log('안녕')}
+       setTimeout(hello,3000) //1000이 1초
+       */
+        
+        //2번
+        //setTimeout(hello(),3000) 1번,3번은 정상작동 2번은 실패
+        //2번은 1,3번과 달리 값을 인자로 넘기는 것이 아닌 함수를 인자로 사용하기 때문에 return값을 날리는 용도인데 return값이 없으니 undefined가 날라가서 오류
+
+        //3번
+        //setTimeout(()=>{console.log('hello')},3000)
+
+        /*
+       //setInterval : 일정 주기로 실행
+       const hello= ()=> {console.log('안녕')}
+       const _id = setInterval(hello,1000)
+       setTimeout(()=>{clearInterval(_id)},3000)
+        */
+
+        let timer = 10
+        const _id = setInterval(()=>{
+            const cp_h1 = document.querySelector('#count_down')
+            cp_h1.textContent = timer
+            timer = timer -1
+            if(timer<0)
+            {
+                clearInterval(_id)
+                cp_h1.textContent = 'Done'
+            }
+        },1000)
+
+    </script>
+    </body>
+</html>  

@@ -1,0 +1,84 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <h1 id='grade'>
+        <script>
+
+        //literal --> 값에 대해
+        // 12 --> integer
+        //3.14 --> floating point number
+        //'hello' --> string
+        //*추가로 object literal이 존재
+        //object literal : 배열에 강제로 정해지는 0,1,2...의 index가 아닌 특정 명칭을 삽입
+        //['찰스',20,false]는 원래 index 0,1,2를 가지나 그 대신 name,age,flag등으로 이름 지을 수 있음.
+        
+        //const person =['찰스',20];
+        const person ={ name:'찰스' , age:20 }; // object literal전용 브래킷
+        
+        /*
+        //object literal & values와 keys
+        console.log('person name: '+person.name);
+        //console.log('person name: '+person[name]);
+        console.log('person age: '+person.age);
+        console.log('keys: '+Object.keys(person));
+        console.log('keys: '+Object.values(person));
+        */
+
+        /* 
+        //object literal 함수1
+        const showobj = (ol) => {
+            const keys = Object.keys(ol);
+            keys.forEach((elem,idx) => {console.log(elem+'--->'+ol[elem]);
+            });
+        };// 마지막 showobj라는 변수의 대한 마무리때문에 세미콜론을 찍는건가?? 안써도 되긴하던데...
+
+        showobj(person);
+
+        //object literal 함수2
+        const showobj2 = (ol) => {
+            const keys = Object.keys(ol);
+            for (let i=0;i<keys.length;i++)
+            {
+                console.log(keys[i]+'--->'+ol[keys[i]]);
+            }
+        };// 마지막 showobj라는 변수의 대한 마무리때문에 세미콜론을 찍는건가?? 안써도 되긴하던데...
+        showobj2(person);
+        */
+
+        //function --> method
+        //메소드 추가하기
+
+        person.sayhello = () => {console.log('hello!');};
+        //person.sayhello();
+        person.sayhello2 = (v) => {console.log(v+'hi');};
+        //person.sayhello2('찰스');
+        person.areyouolderthan =(_age) => {
+            if(person.age > _age)
+            {
+                return true;
+            }
+            else{
+                return false;
+            }
+        } 
+        //const check_age = 10;
+        //console.log('Are you oldere than '+check_age+'? '+person.areyouolderthan(check_age));
+        //console.log(person)
+
+        const a = {
+            name:'찰스',
+            detail: {
+                name: '톰',
+                age: 10
+            } 
+        };
+        console.log('a :'+a); //의외로 모든 정보를 보여주는 것이 아닌 object object라 표시한다.
+        console.log('a :'+a.name);
+        console.log('a detail: '+a.detail.name);
+        </script>
+        </h1>
+        
+    </body>
+</html>  

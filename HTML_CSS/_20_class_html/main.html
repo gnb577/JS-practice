@@ -1,0 +1,67 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+         'use strict' // 엄격하게 제한
+
+         class Person{
+             constructor(_name,_age){
+                 this.name = _name;
+                 this.age = _age;
+             }
+             
+             add_city_info(_city){
+                 this.city = _city;
+             }
+
+             show_info(){
+                 console.log(`${this.name} is ${this.age} yrs old. He(She) lives in ${this.city}.`)
+             }
+
+             is_older_than(value)
+             {
+                 if(this.age > value)
+                 {
+                     return true;
+                 }
+                 else{
+                     return false;
+                 }
+             }
+         }
+
+         //javascript에서는 오직 한 부모로 부터만 상속받을 수 있음
+         class Student extends Person{
+             constructor(_name,_age,_dream)
+             {
+                 //super를 이용해 상속받은 값을 표시
+                 super(_name,_age)
+                 this.dream = _dream
+             }
+             show_info()
+             {
+                 super.show_info()
+                 console.log(`His(Her) dream is ${this.dream}`)
+             }
+         }
+
+         const s = new Student('tom',19,'pilot')
+         s.add_city_info('incheon')
+         s.show_info()
+
+         const p = new Person('jim',20);
+         p.add_city_info('Seoul');
+         const q = new Person('jane',21);
+         p.add_city_info('Busan');
+         console.log(p)
+         console.log(q)
+
+         p.show_info();
+         console.log(`${p.name} is older than 19?`)
+         console.log(p.is_older_than(19))
+
+        </script>
+    </body>
+</html>

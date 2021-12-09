@@ -1,0 +1,65 @@
+<html>
+    <head>
+        
+    </head>
+    <body>
+        <h1 id='grade'>
+        <script>
+        const myarray = [1,2,'apple','banana',3.14,'apple',true,false,2,'apple'];
+        
+       //1. 배열에 포함된 모든 사과 제거
+      
+       /*
+       let a=0;
+       while(1)
+       {
+           a = myarray.indexOf('apple'); //apple인덱스 검출
+          if(a !== -1)
+          {
+              myarray.splice(a,1); //해당 위치의 apple제거
+          }
+          else{
+              break;
+          }
+       }
+       console.log(myarray);
+      */
+
+       
+       //2. 사과의 갯수는?
+
+       /*
+        let a=0;
+        let flag=0;
+        let count=0;
+       while(1)
+       {
+           a = myarray.indexOf('apple',flag);//apple을 찾고
+          if(a !== -1)
+          {
+              count++; // count
+              flag = a+1; //찾은 위치 다음부터 다시 탐색
+          }
+          else{
+              break;
+          }
+       }
+       console.log('사과의 개수: '+count);
+       */
+
+       /*
+       //2번째
+       for (let i =0; i< myarray.length;i++)
+       {
+           if(myarray[i] === 'apple')
+           {
+               cnt+=1;
+           }
+       }
+       */
+
+        </script>
+        </h1>
+        
+    </body>
+</html>  

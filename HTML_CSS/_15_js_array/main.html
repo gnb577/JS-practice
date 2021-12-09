@@ -1,0 +1,67 @@
+<html>
+    <head>
+     
+    </head>
+    <body>
+        <script>
+            /*
+            //배열
+            const a = Array(10);
+            a.fill(0);
+            // = const a = Array(10).fill(0);
+
+            //mapping 원본에서 규칙을 따라 새로운 생성물이 탄생
+            const b = a.map((_elem,_idx)=>{return _idx+1})
+            console.log('map b is:'+b);
+
+
+            //sort
+            const c =[45,33,22,13,7,99];
+            console.log('c is :'+c);
+            
+            const d = c;
+            d.sort();
+            //slice함수는 덜어오는 개념, c를 변경시키지 않고 덜어오기
+            const sortc = c.slice().sort((a,b)=>{
+                if(a < b)
+                {
+                    return -1; //negative
+                }
+                else if (a>b)
+                {
+                    return 1; //positive
+                }
+                else
+                {
+                    return 0; //zero
+                }
+            })
+            console.log('after sorting c is :'+sortc);
+            console.log('after sorting d is'+d);
+`           */
+
+            /*
+           // const strarray = ['banana','apple','orange']
+            const strarray =['호박','수박','사과','포도','banana','apple','orange']
+            const sd = strarray.slice().sort((a,b)=>(a<b)?-1:(a>b)?1:0)
+            const sd2 = strarray.slice().sort((a,b)=>(a.localeCompare(b)))
+
+            //위의 긴 가정문을 아주 짧고 쉽게 삼항연산자로 구현
+            console.log('strarray is: '+strarray);
+            console.log('sd is: '+sd);
+            console.log('sd2 is: '+sd2);
+            */
+
+            //localecompare
+            const d = ['abc','Abc','포도','오렌지','zac','Zac']
+            const sd = d.slice().sort((a,b)=>(a<b)?-1:(a>b)?1:0)
+            const sd2 = d.slice().sort((a,b)=>(a.localeCompare(b,{'sensitivity':'base'})))
+
+            console.log('d is: '+d);
+            console.log('sd is: '+sd);
+            console.log('sd2 is: '+sd2);
+
+
+        </script>
+    </body>
+</html>  

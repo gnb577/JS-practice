@@ -1,0 +1,197 @@
+<html>
+    <head>
+        <style>
+            button{
+                width:50px;
+                height:50px;
+                margin:5px;
+            }
+            #operator{
+                width:50px;
+                height:50px;
+                margin:5px;
+                text-align:center;
+            }
+            #result{
+                width:180px;
+                height:50px;
+                margin:5px;
+                text-align: right;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <input readonly id="operator">
+            <input readonly type="number" id='result'>
+        </div>
+       <div>
+           <button id='n7'>7</button>
+           <button id='n8'>8</button>
+           <button id='n9'>9</button>
+           <button id='op_plus'>+</button>
+       </div>
+       <div>
+        <button id='n4'>4</button>
+        <button id='n5'>5</button>
+        <button id='n6'>6</button>
+        <button id='op_sub'>-</button>
+    </div>
+    <div>
+        <button id='n1'>1</button>
+        <button id='n2'>2</button>
+        <button id='n3'>3</button>
+        <button id='op_mul'>*</button>
+    </div>
+    <div>
+        <button id='op_clr'>clear</button>
+        <button id='n0'>0</button>
+        <button id='op_calc'>=</button>
+        <button id='op_div'>/</button>
+    </div>
+
+    <script>
+        let numfirst =''; //피연산자1
+        let numsecond =''; //피연산자2
+        let _op = null;
+
+        //higher order function & closure
+        const numfunc = (n)=> {
+            //
+            return ()=>{
+                if(_op === null)
+                {
+                    numfirst = numfirst+n;
+                    cp_input_num.value = numfirst;
+                }
+                else{
+                    numsecond = numsecond+n;
+                    cp_input_num.value = numsecond;
+                }
+            }
+        }
+
+        const sumK = (a)=>{
+            return (b)=> {
+                return a+b; //a를 원래는 사용할 수 없지만 closure개념에서 a를 제공하는 환경을 그대로 기억하고 있기에 사용가능
+            }
+        }
+        /*
+        //higher order function for operator
+        const opfunc =(op)=>
+        {
+            return ()=>{
+                
+            }
+        }
+        */
+
+         //higher order function for operator2
+         const opfunc =(op)=>()=>{
+             switch(op){
+                 case '+':
+                 case '-':
+                 case '*':
+                 case '/':
+                    _op = op;
+                    cp_input_op.value = op;
+                    break;
+                case '=':
+                    switch(_op){
+                        case '+':
+                        cp_input_num.value =parseInt(numfirst)+parseInt(numsecond);
+                        break;
+                        case '-':
+                        cp_input_num.value =parseInt(numfirst)-parseInt(numsecond);
+                        break;
+                        case '*':
+                        cp_input_num.value =parseInt(numfirst)*parseInt(numsecond);
+                        break;
+                        case '/':
+                        cp_input_num.value =parseInt(numfirst)/parseInt(numsecond);
+                        break;
+                    }
+                    break;
+                case 'clear':
+                    numfirst ='';
+                    numsecond = '';
+                    _op = null;
+                    cp_input_num.value ='';
+                    cp_input_op.value='';
+                    break;
+             }
+         }
+        
+
+
+        const cp_input_num = document.querySelector('#result');
+        const cp_input_op = document.querySelector('#operator');
+
+
+        document.querySelector('#n0').addEventListener('click',numfunc('0'));
+        document.querySelector('#n1').addEventListener('click',numfunc('1'));
+        document.querySelector('#n2').addEventListener('click',numfunc('2'));
+        document.querySelector('#n3').addEventListener('click',numfunc('3'));
+        document.querySelector('#n4').addEventListener('click',numfunc('4'));
+        document.querySelector('#n5').addEventListener('click',numfunc('5'));
+        document.querySelector('#n6').addEventListener('click',numfunc('6'));
+        document.querySelector('#n7').addEventListener('click',numfunc('7'));
+        document.querySelector('#n8').addEventListener('click',numfunc('8'));
+        document.querySelector('#n9').addEventListener('click',numfunc('9'));
+
+
+        document.querySelector('#op_plus').addEventListener('click',opfunc('+'));
+        document.querySelector('#op_sub').addEventListener('click',opfunc('-'));
+        document.querySelector('#op_mul').addEventListener('click',opfunc('*'));
+        document.querySelector('#op_div').addEventListener('click',opfunc('/'));
+        document.querySelector('#op_calc').addEventListener('click',opfunc('='));
+        document.querySelector('#op_clr').addEventListener('click',opfunc('clear'));
+
+        /* 
+        //functional programming, argument도 function이 될 수 있고, return값도 funcction이 될 수 있음
+        function funcA (k) {
+            return ()=> {console.log('hello');}
+        }
+
+        function funcB (k,funcK)
+        {
+            funcK(k);
+        }
+
+        funcB(3, (v)=>{console.log(v+'를 입력하였습니다.');});
+        */
+
+        /*
+        document.querySelector('#n0').addEventListener('click',()=>{
+           if(_op === null)
+           {
+               numfirst = numfirst+'0';
+               console.log(numfirst);
+               cp_input_num.value = numfirst;
+           }
+           else
+           {
+               numsecond = numsecond+'0';
+               console.log(numsecond);
+           }
+        });
+
+        document.querySelector('#n1').addEventListener('click',()=>{
+            if(_op === null)
+           {
+               numfirst = numfirst+'1';
+               console.log(numfirst);
+               cp_input_num.value = numfirst;
+
+           }
+           else
+           {
+               numsecond = numsecond+'1';
+               console.log(numfirst);
+           }
+        });
+        document.querySelector('#n2').addEventListener('click',()=>{console.log('2 눌림');});
+        */
+    </script>
+    </body>
+</html>  

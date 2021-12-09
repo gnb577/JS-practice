@@ -1,0 +1,49 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <h1 id='h11'>여기입니다.</h1>
+        <h1 id='h12'>하이요</h1>
+        <h1 id='h13'>바이요</h1>
+        <script>
+            const usermsg = prompt();
+            
+            console.log("사용자 입력 msg: "+usermsg);
+            document.querySelector('h1#h12').textContent = usermsg;
+            
+            const allh1 = document.querySelectorAll('h1');
+            allh1.forEach((elem2,index) => {elem2.textContent = usermsg;})
+            
+            //1. console 출력 --> chrome-->개발자도구
+            //console.log("이것은 자바스크립트입니다.");
+            //console.log('이것은 자바스크립트입니다.');
+            //console.log(`이것은 자바스크립트입니다.`);
+            //parseint(문자열) --> 숫자
+            //console.log('parseint의 결과는 '+ parseInt('123')+5);
+            //console.log('parseint의 결과는 '+ (parseInt('123')+5));
+            //console.log('4의 자료형은 '+typeof(4));
+            //여기는 java처럼 +로 문장을 연결한다.
+            //typeof--> 자료형 이름
+            //console.log(typeof("hello")); //string형이겠지?
+            
+            //let은 가변변수
+            //const는 불변변수
+            
+            /*
+            가능
+            let b=1;
+            b=2;
+            */
+
+            /*
+            불가
+            const a =1;
+            a=2;
+            */
+
+            // 2의 3승 : 2^3(x) , 2**3(o)
+        
+        </script>
+    </body>
+</html>

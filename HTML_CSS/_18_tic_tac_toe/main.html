@@ -1,0 +1,119 @@
+<html>
+    <head>
+      <style>
+          table{
+              border-collapse: collapse;
+          }
+          td{
+              border : 3px solid black;
+              width : 50px;
+              height : 50px;
+              text-align : center;
+          }
+      </style>
+    </head>
+    <body>
+        <script>
+            const cp_table = document.createElement('table');
+            const cp_result = document.createElement('div');
+            let cnt =0;
+            let mark = 'O'
+            let winflag = 0;
+
+            const checkwin = (_td)=>{
+                let rowIndex = _td.parentNode.rowIndex;
+                let colIndex = _td.cellIndex;
+                console.log('현재 rowIndex : '+rowIndex);
+                console.log('현재 colIndex : '+colIndex);
+                console.log('\n');
+
+                if(board[rowIndex][0].textContent === mark && board[rowIndex][1].textContent === mark && board[rowIndex][2].textContent === mark)
+                {
+                    return true;
+                }
+                if(board[0][colIndex].textContent === mark && board[1][colIndex].textContent === mark && board[2][colIndex].textContent === mark)
+                {
+                    return true;
+                }
+                if(board[0][0].textContent === mark && board[1][1].textContent === mark && board[2][2].textContent === mark)
+                {
+                    return true;
+                }
+                if(board[0][2].textContent === mark && board[1][1].textContent === mark && board[2][0].textContent === mark)
+                {
+                    return true;
+                }
+            };
+
+            const table_event_listener = (event)=>{
+                const which_td = event.target.closest('td');
+                if(which_td.textContent !== ''){
+                    return;
+                }
+                
+                
+                which_td.textContent = mark;
+                
+
+                if(checkwin(which_td) === true)
+                {
+                    cp_result.textContent = mark +'가 이겼습니다.';
+                    cp_table.removeEventListener('click',table_event_listener);
+                   
+                }
+
+                mark = (mark === 'O')?'X':'O'; //mark를 앞에 놨더니 변화하는 mark에 대한 값이 감지가 되지 않아 원하는 결과를 못얻음
+                //나는 O를 3개 찍었지만 CHECK가 기존에는 아래에 있어 X 3개를 검색하니 원하는 결과를 찾지 못했던 것
+                //그리고 그렇기에 대각선도 한 템포 늦게 결과가 나왔던 것
+                cnt++;
+
+                if(cnt === 9)
+                {
+                    cp_result.textContent = '무승부 입니다.';
+                    cp_table.removeEventListener('click',table_event_listener);
+                }
+
+                
+
+                /*
+                if(mark === 'O'){
+                    mark = 'X';
+                }
+                else{
+                    mark = 'O';
+                }
+                */
+            };
+
+            const board = []
+            
+            for(let i=0;i<3;i++)
+            {
+                const cp_tr = document.createElement('tr');
+                const t_row = []
+                for(let j=0; j<3; j++)
+                {
+                    const cp_td = document.createElement('td');
+                    cp_tr.append(cp_td);
+                    t_row.push(cp_td);
+                }
+                board.push(t_row);
+                cp_table.append(cp_tr);
+            }
+            document.body.append(cp_table);
+            document.body.append(cp_result);
+
+            cp_table.addEventListener('click',table_event_listener);
+
+            
+        </script>
+        <!-- <table>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+            <tr><td></td><td></td><td></td></tr>
+
+        </table>  
+        <div id = 'result'>결과표시</div> -->
+        
+    </body>
+</html>  

@@ -1,0 +1,122 @@
+<html>
+    <head>
+
+    </head>
+    <body>
+        <script>
+
+            /* 
+            let a =1
+            let b=a
+            b=10
+
+        
+            console.log('a is '+a)
+            console.log(`a is ${a}`)
+            console.log(`a is ${b}`)
+            */
+
+
+
+            //일반 변수는 내용을 바꿀 수 없고, 객체는 참조를 바꿀 수 없다로 외우면 좋을듯?
+            
+            const a = {'name':'alice','age':20}
+            const b = a
+            const c =  {'name':'john','age':21}
+
+
+            console.log('before a is '+a.name);
+            console.log('before b is '+b.name);
+            b.name = 'tom'
+            //b = c; <-- 불가능 const기 때문에 참조할 수 없다.
+            
+            console.log('after a is '+a.name);
+            console.log('after b is '+b.name);
+
+
+
+            //배열도 refernce다. d = 1, 200, 3이 된다.
+            const d = [1,2,3]
+            const e = d
+            e[1] = 200
+
+            //+d가 아닌 ,d로 쓰면 배열형태로 출력해줌
+            console.log('after d is ',d)
+            d.forEach((v,idx)=>{
+                console.log(`${idx} : ${v}`)
+            })
+
+
+
+
+            //배열 복사하기
+
+            const f = [1,2,3]
+            //const g = [f] //g[0]에 f배열이 들어감
+            //const g = f // 마찬가지로 g[0]에 다 들어감
+            const g = [...f]
+            
+
+            g[1] = 200
+            console.log('f is ',f)
+            console.log('g is ',g)
+
+
+            const h = {
+                name : 'john'
+                ,age : 20
+            }
+            console.log('h : ', h.name, h.age)
+
+            //빈 객체를 만들어 h값을 넣겠다.
+            const i = Object.assign({},h);
+            console.log('i : ',i.name,i.age)
+
+            const j = {
+                name: 'john',
+                age : 20,
+                address : {
+                    city : 'incheon',
+                    street : 10
+                }
+            }
+
+            console.log('j : ', j.name, j.age,j.address.city,j.address.street)
+
+            // alice는 복사때문에 j가 변하지 않지만 seoul은 또 내부가 object의 형태이기에
+            // reference취급되어 j가 변하여 seoul이 되버린다.
+            //이런 얕은 복사를 shallow copy라 함
+            const k = Object.assign({},j)
+            k.name = 'alice'
+            k.address.city = 'seoul'
+
+            console.log('after j : ', j.name, j.age,j.address.city,j.address.street)
+            console.log('k : ', k.name, k.age,k.address.city,k.address.street)
+
+
+            const l = JSON.parse(JSON.stringify(j)) //deep copy
+            //stringify로 한번 문자열로 해처놓은뒤, 다시 parse로 object화하기
+            l.name = 'jay'
+            l.address.city = 'namjang'
+            console.log('after j : ', j.name, j.age,j.address.city,j.address.street)
+            console.log('l : ', l.name, l.age,l.address.city,l.address.street)
+
+
+            const m = ['alice',20,{city : 'incheon', street :10} ]
+            console.log('before m: -------------')
+            console.log(m[0],m[1],m[2].city,m[2].street)
+            const n = [...m]
+            n[0] = 'john'
+            n[1] = 20000
+            n[2].city = 'seoul'
+            n[2].street = 555
+
+            console.log('after m: --------')
+            console.log(m[0],m[1],m[2].city,m[2].street)
+            console.log(n[0],n[1],n[2].city,n[2].street)
+
+
+
+        </script>
+    </body>
+</html>

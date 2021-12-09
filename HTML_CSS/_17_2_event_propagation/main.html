@@ -1,0 +1,53 @@
+<html>
+    <head>
+      
+    </head>
+    <body>  
+        <div>
+            <div>
+                <input type="checkbox">
+                <label for="">운동</label>
+            </div>
+            <div>
+                <input type="checkbox">
+                <label for="">쇼핑</label>
+            </div>
+        </div>
+
+        <script>
+            const all_inputs = document.querySelectorAll('input');
+            all_inputs.forEach((_ip,_idx)=>{
+                _ip.addEventListener('click',(event)=>{
+                    console.log(_idx+'bubble phase: input click event 발생')
+                    event.stopPropagation();
+                    //event.stopImmediatePropagation();
+                }) //bubble phase listener
+                
+                 _ip.addEventListener('click',()=>{
+                    console.log(_idx+'capture phase: input click event 발생')
+                },true);//capture phase listener true의 여부로 확인
+            })
+
+            
+            all_inputs.forEach((_ip,_idx)=>{
+                _ip.addEventListener('click',()=>{
+                    console.log(_idx+'회의 두번째 input click event 발생')
+                })
+
+            })
+            
+
+            const divs = document.querySelectorAll('div');
+            divs.forEach((_dv,_idx)=>{
+                _dv.addEventListener('click',()=>{
+                    console.log('\n'+_idx+'bubble phase:  div click event 발생')
+                })
+                 _dv.addEventListener('click',()=>{
+                    console.log('\n'+_idx+'capture phase:  div click event 발생')
+                },true);
+
+            })
+
+        </script>
+    </body>
+</html>  
