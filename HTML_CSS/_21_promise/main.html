@@ -1,0 +1,18 @@
+<html>
+    <!-- 내 웹서버에서 html과 javascript를 작성해서 webserver(chrome)에 보내면
+        Html 다운받고, js 다운받고, web server에서 코드를 해석(rendering을 한다)
+        문제는 html이 작성되기 전에 js가 먼저 실행되면 프로그램이 깨질 수 있기 때문에
+        js가 로딩이 되더라도 html이 다 될때 까지 기다렸다 실행하는 것, 
+        그것이 defer이다. -->
+    <head>
+        <script src="promise.js" defer>
+        
+        </script>
+    </head>
+    <body>
+        <h1>
+            Hello
+        </h1>
+        
+    </body>
+</html>
